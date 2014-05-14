@@ -7,13 +7,16 @@
 # -p 8080:8080 \
 # yuanying/postfixadmin
 #
-FROM ubuntu:precise
+FROM ubuntu:12.04
 MAINTAINER O. Yuanying "yuan-docker@fraction.jp"
 
-ENV DEBIAN_FRONTEND noninteractive
-RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 RUN apt-get update
-RUN apt-get -y install python2.7 python-software-properties
+RUN apt-get -y -q install python-software-properties software-properties-common
+
+#ENV DEBIAN_FRONTEND noninteractive
+#RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
+#RUN apt-get update
+#RUN apt-get -y install python-software-properties
 RUN add-apt-repository -y ppa:ondrej/php5
 RUN apt-get update
 RUN apt-get install -y curl php5 php5-mysql php5-curl php5-imap
